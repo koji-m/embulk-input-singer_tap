@@ -1,27 +1,29 @@
 # Singer Tap input plugin for Embulk
 
-TODO: Write short description here and build.gradle file.
+This plugin runs a singer-tap and reads data from its stdout.
 
 ## Overview
 
 * **Plugin type**: input
-* **Resume supported**: yes
-* **Cleanup supported**: yes
+* **Resume supported**: no
+* **Cleanup supported**: no
 * **Guess supported**: no
 
 ## Configuration
 
-- **option1**: description (integer, required)
-- **option2**: description (string, default: `"myvalue"`)
-- **option3**: description (string, default: `null`)
+- **tap_command**: singer-tap command name (string, required)
+- **config**: singer-tap config file path (string, required`)
+- **catalog**: singer-tap catalog file path (string, default:`null`)
+- **properties**: singer-tap properties file path for legacy taps (string, default:`null`)
 
 ## Example
 
 ```yaml
 in:
   type: singer_tap
-  option1: example1
-  option2: example2
+  tap_command: tap-github
+  config: config.json
+  properties: properties.json
 ```
 
 
