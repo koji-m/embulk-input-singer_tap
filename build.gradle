@@ -22,7 +22,6 @@ dependencies {
     compile  "com.fasterxml.jackson.core:jackson-databind:2.6.7"
     compile  "org.embulk:embulk-core:0.9.23"
     provided "org.embulk:embulk-core:0.9.23"
-    // compile "YOUR_JAR_DEPENDENCY_GROUP:YOUR_JAR_DEPENDENCY_MODULE:YOUR_JAR_DEPENDENCY_VERSION"
     testCompile "junit:junit:4.+"
 }
 
@@ -83,7 +82,7 @@ Gem::Specification.new do |spec|
   spec.description   = %[Loads records from Singer Tap.]
   spec.email         = ["otomustam.ijok@gmail.com"]
   spec.licenses      = ["MIT"]
-  # TODO set this: spec.homepage      = "https://github.com/otomustam.ijok/embulk-input-singer_tap"
+  spec.homepage      = "https://github.com/koji-m/embulk-input-singer_tap"
 
   spec.files         = `git ls-files`.split("\n") + Dir["classpath/*.jar"]
   spec.test_files    = spec.files.grep(%r"^(test|spec)/")
