@@ -31,6 +31,10 @@ public class SingerTapInputPlugin
         @ConfigDefault("null")
         public Optional<String> getProperties();
 
+        @Config("input_state")
+        @ConfigDefault("null")
+        public Optional<String> getInputState();
+
         @Config("output_state")
         @ConfigDefault("null")
         public Optional<String> getOutputState();
@@ -74,6 +78,11 @@ public class SingerTapInputPlugin
             command = command + " --properties " + schemaFileName;
         }
         Schema schema = generateSchema(schemaFile);
+
+        if (task.getInputState().isPresent()) {
+            String stateFileName = task.getInputState().get();
+            command = command + " --state " + stateFileName;
+        }
 
         List<String> cmdline = new ArrayList<>(Arrays.asList("sh", "-c"));
         cmdline.add(command);
