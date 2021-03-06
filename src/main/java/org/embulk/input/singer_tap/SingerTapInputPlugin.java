@@ -31,6 +31,10 @@ public class SingerTapInputPlugin
         @ConfigDefault("null")
         public Optional<String> getProperties();
 
+        @Config("output_state")
+        @ConfigDefault("null")
+        public Optional<String> getOutputState();
+
         String getSchemaFileName();
         void setSchemaFileName(String schemaFile);
 
@@ -116,6 +120,7 @@ public class SingerTapInputPlugin
         List<String> cmdline = task.getCommandLine();
         ProcessBuilder pb = new ProcessBuilder(cmdline);
         pb.redirectError(ProcessBuilder.Redirect.INHERIT);
+        String state = "";
         try {
             Process process = pb.start();
             InputStream stream = process.getInputStream();
@@ -146,7 +151,7 @@ public class SingerTapInputPlugin
 
                     }
                     else if (type.equals("STATE")) {
-                        // ToDo
+                        state = root.get("value").toString();
                     }
                     else {
                         throw new DataException("invalid message type: " + type);
@@ -157,6 +162,17 @@ public class SingerTapInputPlugin
         }
         catch (IOException e) {
             throw new DataException(e.getMessage());
+        }
+        finally {
+            if (task.getOutputState().isPresent()) {
+                String statePath = task.getOutputState().get();
+                try (FileOutputStream writer = new FileOutputStream(statePath)) {
+                    writer.write(state.getBytes());
+                }
+                catch (Exception e) {
+                    throw new DataException(e.getMessage());
+                }
+            }
         }
 
         return Exec.newTaskReport();
