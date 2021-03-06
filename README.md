@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/embulk-input-singer_tap.svg)](https://badge.fury.io/rb/embulk-input-singer_tap)
 
-This plugin runs a singer-tap and reads data from its stdout.
+This plugin runs a [Singer Tap](https://www.singer.io/#taps) and reads data from its stdout.
 
 ## Overview
 
