@@ -1,5 +1,7 @@
 # Singer Tap input plugin for Embulk
 
+[![Gem Version](https://badge.fury.io/rb/embulk-input-singer_tap.svg)](https://badge.fury.io/rb/embulk-input-singer_tap)
+
 This plugin runs a singer-tap and reads data from its stdout.
 
 ## Overview
