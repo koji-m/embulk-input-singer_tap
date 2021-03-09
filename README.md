@@ -32,6 +32,11 @@ in:
   output_state: state.json
 ```
 
+## Stream and Schema
+
+Only one stream needs to be selected in the catalog (or properties) file.
+The Schema is determined from the `schema.properties` of the selected stream in the catalog (or properties) file.
+
 
 ## Build
 
